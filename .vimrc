@@ -42,7 +42,10 @@
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        if executable('ack')
+        if executable('ack-grep')
+            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            Bundle 'mileszs/ack.vim'
+        elseif executable('ack')
             Bundle 'mileszs/ack.vim'
         endif
 
@@ -124,13 +127,16 @@
 
     " HTML
         if count(g:spf13_bundle_groups, 'html')
-            Bundle 'HTML-AutoCloseTag'
+            Bundle 'amirh/HTML-AutoCloseTag'
             Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
         endif
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
+            let g:rubycomplete_buffer_loading = 1
+            "let g:rubycomplete_classes_in_global = 1
+            "let g:rubycomplete_rails = 1
         endif
 
     " Misc
@@ -139,6 +145,11 @@
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
             Bundle 'Puppet-Syntax-Highlighting'
+        endif
+
+    " Twig
+        if count(g:spf13_bundle_groups, 'twig')
+            Bundle 'beyondwords/vim-twig'
         endif
     endif
 " }
@@ -178,10 +189,10 @@
 
 " Vim UI {
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+        let g:solarized_termcolors=256
         color solarized                 " load a colorscheme
     endif
         let g:solarized_termtrans=1
-        let g:solarized_termcolors=256
         let g:solarized_contrast="high"
         let g:solarized_visibility="high"
     set tabpagemax=15               " only show 15 tabs
@@ -241,6 +252,7 @@
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 " }
 
 " Key (re)Mappings {
