@@ -18,13 +18,6 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
-        if has ("unix") && "Darwin" != system("echo -n \"$(uname)\"")
-          " on Linux use + register for copy-paste
-          set clipboard=unnamedplus
-        else
-          " one mac and windows, use * register for copy-paste
-          set clipboard=unnamed
-        endif
     " }
 
     " Windows Compatible {
