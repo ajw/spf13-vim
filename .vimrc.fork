@@ -1,6 +1,10 @@
 set nospell
 Bundle 'Shougo/neocomplcache-snippets-complete'
 
+"Sudo write file
+cmap w!! %!sudo tee > /dev/null %
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =>  Move between split windows using Alt + arrow keys
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
