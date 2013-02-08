@@ -30,6 +30,7 @@ nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying (from http://amix.dk/vim/vimrc.html)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -65,4 +66,11 @@ function! VisualSelection(direction) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use CTRL-S for saving, also in Insert mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 
